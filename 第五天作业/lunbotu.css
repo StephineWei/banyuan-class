@@ -30,27 +30,40 @@ img{
     animation-play-state: paused; 
 }
 /*动画*/
-@keyframes marginLeft {
+@keyframes marginLeft 
+{
     0% {
         /* margin-left: 0; */
 
     }
-
+    15%{
+        transform: translateX(-600px);
+        border-radius: 50px;
+    }
     25% {
         /* margin-left: -600px; */
         transform: translateX(-600px);
     }
 
+    35%{
+        transform: translateX(-1200px);
+    }
     50% {
         /* margin-left: -1200px; */
         transform: translateX(-1200px);
     }
 
+    60%{
+        transform: translateX(-1800px);
+    }
     75% {
         /* margin-left: -1800px; */
         transform: translateX(-1800px);
     }
-
+    85%{
+        transform: translateX(-2400px);
+    }
+    
     100% {
         /* margin-left: -2400px; */
         transform: translateX(-2400px);
