@@ -3,86 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>homework</title>
-  <link rel="stylesheet" href="7.25.css">
-  <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+  <title>Document</title>
 </head>
 <body>
-
-<div class="title">
-  LATEST FROM OUR BLOG
-</div>
-
-<div class="title-text" >
-  Lorem ipsum dolor sit amet,consectetur adipiscing elit,sed do eiusmod
-  <br>
-   tempor incididunt ut labore et dolor magna aliqua.
-</div >
-
-<div class="img-box">
-
-  <div class="img-box-blog">
-      <div class="img1"></div>
-      <span style="font-size: 20px;font-weight: 600;">This Is Lorem Ipsum Heading.</span>
-      <br>
-      <span style="font-size: 16px;font-weight: 300;">
-        Posted In:Legal Advice 
-        <i class="fa fa-eye" aria-hidden="true" style="float: right;">11</i>
-        <i class="fa fa-comments" aria-hidden="true" style="float: right;margin-right: 5px;">15</i>
-        <br>
-        <br>
-        We cannot expect people to have respect for laws and orders until we
-            teach respect to those we have entrusted to enforce those laws all
-            the time.We always want to help people cordially.
-      </span>
-      <div class="readmore">
-        <a style="color: #949494;" href="#">Read more →</a>
-      </div>
-  </div>
+  <script>
+   
 
 
-  <div class="img-box-blog">
-    <div class="img2"></div>
-    <span style="font-size: 20px;font-weight: 600;">This Is Lorem Ipsum Heading.</span>
-    <br>
-    <span style="font-size: 16px;font-weight: 300;">
-      Posted In:Legal Advice 
-      <i class="fa fa-eye" aria-hidden="true" style="float: right;">11</i>
-      <i class="fa fa-comments" aria-hidden="true" style="float: right;margin-right: 5px;">15</i>
-      <br>
-      <br>
-      We cannot expect people to have respect for laws and orders until we
-          teach respect to those we have entrusted to enforce those laws all
-          the time.We always want to help people cordially.
-    </span>
-    <div class="readmore">
-      <a style="color: #949494;" href="#">Read more →</a>
-    </div>
-</div>
-
-<div class="img-box-blog">
-  <div class="img3"></div>
-  <span style="font-size: 20px;font-weight: 600;">This Is Lorem Ipsum Heading.</span>
-  <br>
-  <span style="font-size: 16px;font-weight: 300;">
-    Posted In:Legal Advice 
-    <i class="fa fa-eye" aria-hidden="true" style="float: right;">11</i>
-    <i class="fa fa-comments" aria-hidden="true" style="float: right;margin-right: 5px;">15</i>
-    <br>
-    <br>
-    We cannot expect people to have respect for laws and orders until we
-        teach respect to those we have entrusted to enforce those laws all
-        the time.We always want to help people cordially.
-  </span>
-  <div class="readmore">
-    <a style="color: #949494;" href="#">Read more →</a>
-  </div>
-</div>
 
 
-  
+    var now = new Date;
+    var bir = new Date(1999, 08, 14, 08, 00, 00); 
 
-</div >
-  
+    console.log(bir);
+    console.log(now);
+    var cha = now - bir;
+    console.log(cha);
+    var date = cha / 86400000;
+    var hours = (cha % 86400000) / 3600000;
+    var minutes = (cha % 86400000 % 3600000) / 60000;
+    console.log('出生到现已经过了' + parseInt(date) + '天零' + parseInt(hours) + '小时' + parseInt(minutes) + '分钟')
+
+  </script>
 </body>
 </html>
