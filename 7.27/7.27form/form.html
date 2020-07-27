@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7.27from</title>
+    <link rel="stylesheet" href="form.css">
+    <!-- <link rel="stylesheet" href="form.js"> -->
+</head>
+<body>
+    <form class="form" action="" onsubmit="return false" >
+    
+        <div class="title">
+            <h1>表单</h1>
+        </div>
+
+        <div class="text">
+            <div class="input-name">
+                Your Name :
+                <input class="input-name-box"   placeholder ="Your Full Name">
+            </div>
+
+            <div class="input-password">
+                Your Password :
+                <input class="input-password-box" type="password" >
+            </div>
+
+            <div class="error1">
+                姓名格式错误，姓名需要4到16位，字母，数字，下划线，减号
+            </div>
+            <div class="error2">
+                密码格式错误，password长度不小于8位，不大于15位
+            </div >
+            
+                <button class="button-box send" type="submit">Send</button>
+
+        </div >
+
+    </form>
+</body>
+
+<script>
+var form = document.getElementsByTagName("form");
+var name_error = document.getElementsByClassName('error1')[0];
+var pwd_error = document.getElementsByClassName('error2')[0];
+
+var name_flag = true;
+var password_flag = true;
+
+var input_name_box = document.getElementsByClassName("input-name-box")[0];
+var input_password_box =document.getElementsByClassName("input-password-box")[0];
+var btn = document.getElementsByClassName("button-box")[0];
+
+btn.addEventListener("click",function(){
+    var password_pattern = /\w{8,15}/;
+    password_flag = password_pattern.test(input_password_box.value);
+    if (password_flag==false){
+        pwd_error.style.display = "block";
+        input_password_box.value = '';
+        password_flag = true;
+    }
+    else{
+        input_password_box.value= '';
+        pwd_error.style.display = "none";
+        password_flag = false;
+    }
+
+    var name_pattern = /([a-zA-Z0-9]|_|-]){4,16}/;
+    name_flag = name_pattern.test(input_name_box.value);
+    if (name_flag==false){
+        name_error.style.display = "block";
+        input_name_box.value = '';
+        name_flag = true;
+    }
+    else{
+        input_name_box.value = '';
+        name_error.style.display = "none";
+        name_flag = false;
+    }
+
+})
+
+
+</script>
+</html>
