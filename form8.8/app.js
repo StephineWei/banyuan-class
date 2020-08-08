@@ -74,25 +74,6 @@ router.post('/checkName', async (ctx, next) => {
   }
 })
 
-router.post('/checkname', async (ctx, next) => {
-  const { name, password } = ctx.request.body;
-  const n = ['abcd', '1234', '2222'];
-  var pattenN = /^[a-zA-Z0-9_-]{4,16}$/;
-  var flagN = pattenN.test(name);
-  var pattenP = /^\w{8,15}$/;
-  var flagP = pattenP.test(password);
-  const data = {};
-  if (n.indexOf(name) == -1) {
-    data.include = false;
-  }
-  else {
-    data.include = true;
-  }
-  if (flagN && flagP && !data.include) {
-    ctx.response.body = { name, password }
-  }
-
-})
 
 
 
