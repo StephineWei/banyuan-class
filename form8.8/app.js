@@ -58,7 +58,7 @@ app.on('error', function(err, ctx) {
 
 router.post('/checkName', async (ctx, next) => {
   const { name } = ctx.request.body;
-  const n = ['abcd', '1234', '2222'];
+  const n = ['isen', 'abcd', 'cindy'];
   var patten = /^[a-zA-Z0-9_-]{4,16}$/;
   var flag = patten.test(name);
   const data = {};
