@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>表单</title>
-	
+
 
 	<style>
 		.basic-grey {
@@ -115,7 +115,7 @@
 </head>
 
 <body>
-	<form action="http://192.168.10.181:3000/checkname" method="post" class="basic-grey" id='mainForm'>
+	<form action="http://192.168.10.181:3000/check" method="post" class="basic-grey" id='mainForm'>
 		<h1>表单
 		</h1>
 		<label class='name-label'>
@@ -201,6 +201,12 @@
 						console.log(error);
 					}
 				})
+			} else {
+				if (warningEle) {
+					warningEle.remove();
+				}
+				var ele = createWarning('name', '用户名输入错误');
+				nameLabel.append(ele);
 			}
 
 		}
@@ -212,8 +218,11 @@
 
 			// reg
 			var patten = /^\w{8,15}$/;
+
 			var flag = patten.test(password);
+
 			var warningEle = document.getElementsByClassName('warning password')[0];
+
 			if (flag) {
 				// 清空warning
 
@@ -268,7 +277,7 @@
 			var name = nameEle.value;
 			$.ajax({
 				type: 'post',
-				url: 'http://192.168.9.209:3000/checkTotal',
+				url: 'http://192.168.10.181:3000/check',
 				data: {
 					name,
 					password
