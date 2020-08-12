@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>form2</title>
+</head>
+<body>
+  
+    <div class="main">
+
+      <div class="name-label">
+        用户名：
+        <input type="text" class="name"/>
+      </div>
+
+      <div class="password-label">
+        密码：
+        <input type="text" class="password"/>
+      </div>
+
+      <div class="judge-label">
+        确认：
+        <input type="text" class="judge"/>
+      </div>
+
+      <div>
+        <button type="button" class="login-btn " disabled>注册</button>
+      </div>
+    </div>
+
+    <script src="./jquery-3.5.1/jquery3.5 (1).js"></script>
+    <script>
+        var nameEle = document.getElementsByClassName('name')[0];
+        var passwordEle = document.getElementsByClassName('password')[0];
+        var judgeEle = document.getElementsByClassName('judge')[0];
+        var buttonEle = document.getElementsByClassName('login-btn')[0];
+        // label
+        var nameLabel = document.getElementsByClassName('name-label')[0];
+        var passwordLabel = document.getElementsByClassName('password-label')[0];
+        var judgeLabel = document.getElementsByClassName('judge-label')[0];
+
+
+        var nameTestResult = false;
+        var passwordTestResult = false;
+        var judgeTestResult = false;
+        
+
+
+        nameEle.onblur = function(){
+
+            var name = nameEle.value;
+            var parttenN = /^[a-zA-Z0-9_-]{4,16}$/;
+            var flag = parttenN.test(name);
+            var warningEle = document.getElementsByClassName('warning name')[0];
+
+            console.log(flag)
+            if (flag) {
+                console.log('success')
+                if (warningEle) {
+                    warningEle.remove();
+                }
+            } else {
+                var ele = createWarning('name', '用户名输入错误，4到16位，字母，数字，下划线，减号');
+                if (!warningEle) {
+                    nameEle.after(ele)
+                }
+    }
+        nameTestResult = flag;
+        enableButton();
+        }
+        
+
+		    /* 检测密码 */
+		passwordEle.onblur = function() {
+
+            var password = passwordEle.value;
+            
+			var pattenP = /^\w{8,15}$/;
+			var flag = pattenP.test(password);
+			var warningEle = document.getElementsByClassName('warning password')[0];
+			if (flag) {
+				if (warningEle) {
+					warningEle.remove();
+				}
+			} else {
+				var ele = createWarning('password', '密码格式错误，password的长度不小于8位，不大于15位');
+				if (!warningEle) {
+					passwordLabel.append(ele);
+				}
+			}
+			passwordTestResult = flag;
+			enableButton();
+        }
+
+
+        judgeEle.onblur = function() {
+
+            var password = passwordEle.value;
+            var judgePassword = judgeEle.value;
+            var flagjudge = true;
+
+            var warning = document.getElementsByClassName('warning judgepassword')[0];
+
+            if (password == judgePassword) {
+
+                flagjudge = true;
+                if (warning) {
+                    warning.remove()
+                }
+            } else {
+                flagjudge = false;
+                var ele = createWarning('warning judgepassword', '密码与第一次密码不同')
+                if (!warning) {
+                    judgeEle.after(ele)
+                }
+            }
+            judgeTestResult = flagjudge;
+            enableButton()
+            }
+
+
+        function enableButton() {
+			buttonEle.disabled = !(nameTestResult && passwordTestResult && judgeTestResult)
+		}
+
+		/* 创建提示元素 */
+		function createWarning(target, content) {
+			var ele = document.createElement('div');
+			ele.className = 'warning ' + target;
+			ele.innerHTML = content;
+
+			return ele;
+		}
+
+		// buttonEle.onclick = function () {
+		// 	// var name = nameEle.value;
+		// 	// var password = passwordEle.value;
+		// 	$.ajax({
+		// 		type: 'post',
+		// 		url: 'http://localhost:3000/check',
+		// 		data: {
+		// 			name:nameEle.value,
+        //             password:passwordEle.value,
+        //             judge:judgeEle.value
+		// 		},
+		// 		success: function (result) {
+		// 			alert('success')
+		// 		},
+		// 		error: function (error) {
+		// 			// console.log(error);
+		// 		}
+		// 	})
+		// }
+
+        buttonEle.onclick = function() {
+            if (nameEle.value && passwordEle.value && judgeEle.value) {
+            $.ajax({
+                type: 'post',
+                url: 'http://localhost:3000/check',
+                data: {
+                    name: nameEle.value,
+                    password: passwordEle.value,
+                    judge: judgeEle.value
+                },
+                success: (result) => {
+                    alert('注册成功!');
+                },
+                error: () => {
+                    console.log(error);
+                }
+            })
+        }
+    }
+            
+                
+
+    </script>
+</body>
+
+
+
+</html>
